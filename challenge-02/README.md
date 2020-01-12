@@ -25,7 +25,14 @@ Onde VALOR é o novo valor da variável.
 function adc(){
   v = 'VALOR';
   return v;
-}
+} /* ERRADO! 
+     A RESOLUÇÃO ESPERADA ERA:
+     
+     function adc(){
+      v = 25;
+      return 'O valor da variável agora é ' + v;
+     }
+*/
 
 // Invoque a função criada acima.
 adc();
@@ -33,7 +40,7 @@ adc();
 // Qual o retorno da função? (Use comentários de bloco).
 /*
   O retorno da função foi 'VALOR'.
-*/
+*/ // ERRADO! A RESOLUÇÃO ESPERADA ERA 'O RETORNO DA VARIÁVEL FOI 25'
 
 /*
 Crie uma função com as seguintes características:
@@ -46,8 +53,10 @@ function teste(x, y, z){
   if(x === undefined || y === undefined || z === undefined){
     return "Preencha todos os valores corretamente!";
   } else {
-    return x * y * z + 2;
-  }
+    return x * y * z + 2; 
+    // TAMBÉM PODERIA USAR "(x * y * z) + 2"
+    // MAS DESSE JEITO FUNCIONA, POIS NA MATEMÁTICA, DIVISÃO E MULTIPLICAÇÃO TEM PRIORIDADE EM RELAÇÃO A ADIÇÃO E SUBTRAÇÃO
+  } // NESSE CASO O ELSE NÃO ERA NECESSÁRIO, PORÉM FUNCIONA DA MESMA FORMA
 }
 
 // Invoque a função criada acima, passando só dois números como argumento.
@@ -73,10 +82,19 @@ Crie uma função com as seguintes características:
 */
 function m(x, y, z){
   if(x >= 0 && y === undefined && z === undefined){
+    /* APESAR DE TAMBÉM FUNCIONAR ATÉ CERTO PONTO, O CORRETO SERIA: 
+      if(x !== undefined && y === undefined && z === undefined) {...}
+    */
     return x;
   } else if (x >= 0 && y >= 0 && z === undefined){
+    /* APESAR DE TAMBÉM FUNCIONAR ATÉ CERTO PONTO, O CORRETO SERIA: 
+      if(x !== undefined && y !== undefined && z === undefined) {...}
+    */
     return x + y;
   } else if (x >= 0 && y >= 0 && z >= 0){
+     /* APESAR DE TAMBÉM FUNCIONAR ATÉ CERTO PONTO, O CORRETO SERIA: 
+      if(x !== undefined && y !== undefined && z !== undefined) {...}
+    */
     return (x + y) / z;
   } else if (x === undefined && y === undefined && z === undefined){
     return false;
