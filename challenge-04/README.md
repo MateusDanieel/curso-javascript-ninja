@@ -15,15 +15,64 @@ var isTruthy = function(arg) {
     x = false;
   }
   return x;
-}
+}; // SEMPRE QUE VOCÊ ATRIBUI UMA FUNÇÃO A UMA VARIAVEL, DEVE FINALIZAR COM PONTO E VIRGULA (;)!
+
+/*
+  APESAR DA MANEIRA ACIMA FUNCIONAR, A RESPOSTA ESPERADA ERA:
+  
+  var isTruthy = function(param) {
+    if(param) {
+      return true;
+    }
+    
+    return false; // SE FOR APENAS DUAS CONDIÇÕES (TRUE E FALSE) NÃO É NECESSÁRIO USAR O 'ELSE'
+  };
+  
+  OU
+  
+  var isTruthy = function(param) {
+    return !!param; // !!param == EXIBE O EQUIVALENTE BOOLEAN
+  };
+  
+*/
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
-isTruthy(undefined, null, NaN, 0, -0, '', "", false);
+isTruthy(undefined, null, NaN, 0, -0, '', "", false); 
+// ERRADO! PASSANDO DESSA MANEIRA ELE IGNORA OS ARGUMENTOS SEGUINTES, POIS NÃO FORAM PASSADOS MAIS DE UM ARGUMENTO POR PARAMETRO, OU SEJA, O JS SÓ LEU O PRIMEIRO ARGUMENTO!
+
+/*
+  O CORRETO SERIA:
+  
+  isTruthy(false);
+  isTruthy(null);
+  isTruthy(undefined);
+  isTruthy('');
+  isTruthy(0);
+  isTruthy(-0);
+  isTruthy(NaN);
+  
+*/
 
 /*
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
 */
 isTruthy(1, 2, 3, 4, 5, 6, 7, 8, 9, true);
+// ERRADO! MESMA COISA DA ANTERIOR
+
+/*
+  O CORRETO SERIA:
+  
+  isTruthy(1);
+  isTruthy('Fernando');
+  isTruthy([]);
+  isTruthy({});
+  isTruthy(function() {});
+  isTruthy('Curso JS Ninja');
+  isTruthy(20 * 30);
+  isTruthy(10 + 10);
+  isTruthy([1, 2, 3]);
+  isTruthy({ a: 1, b: 2});
+*/
 
 
 /*
@@ -43,7 +92,7 @@ var carro = {
     modelo: 'Enzo',
     placa: 'BMH5698',
     ano: 2005,
-    cor: 'Vermelho',
+    cor: 'Amarelo',
     quantasPortas: 2,
     assentos: 5,
     quantidadePessoas: 0
