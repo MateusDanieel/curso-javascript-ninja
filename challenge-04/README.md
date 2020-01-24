@@ -169,6 +169,28 @@ carro.add = function(p){
 
 }
 
+// SOLUÇÃO FEITA NA AULA
+
+carro.adicionarPessoas = function( numeroPessoas ) {
+  var totalPessoas = carro.quantidadePessoas + numeroPessoas;
+  
+  if( carro.quantidadePessoas === carro.assentos && totalPessoas >= carro.assentos ) {
+    return 'O carro já está lotado!';
+  }
+  
+  if( totalPessoas > carro.assentos ) {
+    var quantasPessoasCabem = carro.assentos - carro.quantidadePessoas;
+    var pluralOuSingular = quantasPessoasCabem === 1 ? ' pessoa' : 'pessoas';
+    
+    return 'Só cabem mais ' + quantasPessoasCabem + pluralOuSingular + '!';
+  }
+  
+  carro.quantidadePessoas += numeroPessoas;
+  
+  return 'Já temos ' + carro.quantidadePessoas + ' pessoas no carro!';
+  
+}
+
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
 utilize sempre o formato de invocação do método (ou chamada da propriedade),
@@ -204,7 +226,7 @@ carro.add(4);
 carro.add(3);
 
 // Tire 4 pessoas do carro.
-carro.quantidadePessoas += - 4;
+carro.quantidadePessoas += - 4; // ERRADO! A resposta esperada era 'carro.add(-4)' -- O QUE GEROU UM ERRO NA FUNÇÃO, QUE NÃO REMOVE PESSOAS DO CARRO
 
 // Adicione 10 pessoas no carro.
 carro.add(10);
