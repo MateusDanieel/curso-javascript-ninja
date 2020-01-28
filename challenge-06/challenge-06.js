@@ -6,6 +6,8 @@ e imprima o nome desse campeonato no console.
 */
 var championship = 'Paulistão';
 
+console.log(championship); // ESQUECEU DE IMPRIMIR
+
 /*
 Declare uma variável chamada `teams`, que receberá um array com 5 elementos.
 Os elementos serão nomes de times do campeonato escolhido, e os nomes devem
@@ -53,7 +55,19 @@ function showTeamPosition(x) {
         default:
             return 'Não temos a informação do time que está nessa posição.';
     }
-}
+} 
+
+// ERRADO! A RESPOSTA ESPERADA SERIA:
+
+/*
+    function showTeamPosition( position ) { 
+        if( position < 1 || position > 5 ){
+            return 'Não temos a informação do time que está nessa posição.';
+        }
+
+        return 'O time que está em ' + position + 'º lugar é o ' + teams[ position - 1 ] + '.';
+    }
+*/
 
 /*
 Escolha 4 times do campeonato selecionado e mostre a posição dele, usando a
@@ -74,6 +88,8 @@ var i = 20;
 while(i <= 30){
     console.log(i);
     i++;
+    // TAMBÉM PODERIA SER APENAS:
+    // console.log(i++);
 }
 
 /*
@@ -93,19 +109,19 @@ function convertToHex(cor) {
     switch(cor) {
         case 'red':
             return 'O hexadecimal para a cor ' + cor + ' é #FF0000.';
-            break;
+            break; // QUANDO USA 'RETURN', NÃO PRECISA DO 'BREAK'
         case 'black':
             return 'O hexadecimal para a cor ' + cor + ' é #000000.';
-            break;
+            break; // QUANDO USA 'RETURN', NÃO PRECISA DO 'BREAK'
         case 'white':
             return 'O hexadecimal para a cor ' + cor + ' é #FFFFFF.';
-            break;
+            break; // QUANDO USA 'RETURN', NÃO PRECISA DO 'BREAK'
         case 'blue':
             return 'O hexadecimal para a cor ' + cor + ' é #0000FF.';
-            break;
+            break; // QUANDO USA 'RETURN', NÃO PRECISA DO 'BREAK'
         case 'gray':
             return 'O hexadecimal para a cor ' + cor + ' é #999999.';
-            break;
+            break; // QUANDO USA 'RETURN', NÃO PRECISA DO 'BREAK'
         default:
             return 'Não temos o equivalente hexadecimal para ' + cor + '.';
 
@@ -113,9 +129,36 @@ function convertToHex(cor) {
 
 }
 
-/*
-Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
-*/
+// MELHORANDO O CÓDIGO
+
+function convertToHex(cor) {
+
+    var hexa;
+
+    switch(cor) {
+        case 'red':
+            hexa = '#FF0000';
+            break;
+        case 'black':
+            hexa = '#000000';
+            break;
+        case 'white':
+            hexa = '#FFFFFF';
+            break;
+        case 'blue':
+            hexa = '#0000FF';
+            break;
+        case 'gray':
+            hexa = '#999999';
+            break;
+        default:
+            return 'Não temos o equivalente hexadecimal para ' + cor + '.';
+
+    }
+
+    return 'O hexadecimal para a cor ' + cor + ' é ' + hexa + '.';
+
+}
 
 /*
 Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
