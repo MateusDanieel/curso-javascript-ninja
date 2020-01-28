@@ -117,15 +117,19 @@ function convertToHex(cor) {
 Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
 
-console.log( convertToHex('blue') ); // "O hexadecimal para a cor blueé #0000FF."
+/*
+Tente mostrar o hexadecimal de 8 cores diferentes usando a função criada acima.
+*/
 
-console.log( convertToHex('red') ); // "O hexadecimal para a cor redé #FF0000."
+console.log( convertToHex('blue') ); // "O hexadecimal para a cor blue é #0000FF."
 
-console.log( convertToHex('black') ); // "O hexadecimal para a cor blacké #000000."
+console.log( convertToHex('red') ); // "O hexadecimal para a cor red é #FF0000."
 
-console.log( convertToHex('white') ); // "O hexadecimal para a cor whiteé #FFFFFF."
+console.log( convertToHex('black') ); // "O hexadecimal para a cor black é #000000."
 
-console.log( convertToHex('gray') ); // "O hexadecimal para a cor grayé #999999."
+console.log( convertToHex('white') ); // "O hexadecimal para a cor white é #FFFFFF."
+
+console.log( convertToHex('gray') ); // "O hexadecimal para a cor gray é #999999."
 
 console.log( convertToHex('yellow') ); // "Não temos o equivalente hexadecimal para yellow."
 
