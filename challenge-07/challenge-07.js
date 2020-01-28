@@ -20,6 +20,10 @@ itens de tipos diferentes, mostrando o resultado no console.
 addItem(['Jaqueline', null, {carro: 'Golf'}]);
 
 console.log(arr);
+
+// A RESPOSTA MAIS ESPERADA SERIA:
+// console.log( addItem([ 'Jaqueline', null, {carro: 'Golf'} ]) );
+
 /*
 Mostre no console o segundo elemento desse último array, criado acima, com a
 frase:
@@ -50,7 +54,7 @@ var i = 10;
 while( i >= 10 && i <= 20 ) {
     i % 2 === 0 ? console.log(i) : '';
     i++;
-}
+} // O 'i >= 10' FICOU MEIO INÚTIL, POIS O VALOR DE 'i' JÁ ERA 10, PORÉM, FUNCIONA!
 
 /*
 Na mesma ideia do exercício acima: mostre agora os números ímpares.
@@ -62,7 +66,7 @@ var i = 10;
 while( i >= 10 && i <= 20 ) {
     i % 2 !== 0 ? console.log(i) : '';
     i++;
-}
+} // O 'i >= 10' FICOU MEIO INÚTIL, POIS O VALOR DE 'i' JÁ ERA 10, PORÉM, FUNCIONA!
 
 /*
 Repita os mesmos exercícios feitos acima, mas agora usando o loop "for".
@@ -74,10 +78,10 @@ console.log( 'Números pares entre 100 e 120:' );
 
 for(var i = 100; i >= 100 && i <= 120; i++) {
     i % 2 === 0 ? console.log(i) : '';
-}
+} // O 'i >= 100' FICOU MEIO INÚTIL, POIS O VALOR DE 'i' JÁ ERA 100, PORÉM, FUNCIONA!
 
 console.log( 'Números ímpares entre 111 e 125:' );
 
 for(var i = 111; i >= 111 && i <= 125; i++) {
     i % 2 !== 0 ? console.log(i) : '';
-}
+} // O 'i >= 111' FICOU MEIO INÚTIL, POIS O VALOR DE 'i' JÁ ERA 111, PORÉM, FUNCIONA!
