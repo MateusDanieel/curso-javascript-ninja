@@ -5,7 +5,7 @@ desses parâmetros.
 */
 var sum = function calculateSum(x, y) {
     return x + y;
-}
+}; // ESQUECEU O ';'! NÃO PODE ESQUECER O PONTO E VIRGULA QUANDO ATRIBUI UMA FUNÇÃO A UMA VARIÁVEL
 
 /*
 Invoque a função criada acima, passando dois números que serão somados, e mostre
@@ -36,14 +36,18 @@ function showName() {
 /*
 Declare uma variável chamada `varShowName` que recebe a função criada acima.
 */
-var varShowName = showName();
+var varShowName = showName(); // ERRADO!
+                              // AQUI ERA ESPERADO QUE RECEBE A FUNÇÃO, E NÃO A INVOCAÇÃO DA FUNÇÃO!
+                              // A RESPOSTA ESPERADA SERIA: 'var varShowName = showName'. REPARE QUE NÃO TEM O PARENTESES '()'
 
 /*
 Usando a variável criada acima, mostre no console o nome e o retorno da função
 atribuída a ela, com a seguinte frase:
 "A função [NOME DA FUNÇÃO] retorna [RETORNO DA FUNÇÃO]."
 */
-console.log( 'A função ' + '"' + showName.name + '()"' + ' retorna ' + showName() + '.' );
+console.log( 'A função ' + '"' + showName.name + '()"' + ' retorna ' + showName() + '.' ); // ERRADO!
+                                                                                           // AQUI ERA ESPERADO QUE MOSTRASSE O NOME DA FUNÇÃO E INVOCASSE A MESMA UTILIZANDO A VARIAVEL A QUAL ELA FOI ATRIBUIDA!
+                                                                                           // A RESPOSTA ESPERADA ERA: 'console.log( 'A função ' + varShowName.name + ' retorna ' + varShowName() + '.' );'
 
 /*
 Crie uma função literal chamada `calculator`, que funcione assim:
@@ -82,8 +86,8 @@ function calculator(operator) {
                 return "Operação inválida.";
         }
 
-        return "Resultado da operação: " + x + ' ' + operator + ' ' + y + ' = ' + res;
-    }
+        return 'Resultado da operação: ' + x + ' ' + operator + ' ' + y + ' = ' + res + '.';
+    }; // ESQUECEU O PONTO E VIRGULA!
 
 }
 
@@ -96,7 +100,7 @@ var sum = calculator('+');
 /*
 Agora `sum` é uma função. Mostre no console a soma de dois números, usando ela.
 */
-sum(10,20); // 30
+sum(10,20); // 30 // ESQUECEU DE MOSTRAR NO CONSOLE!!
 
 /*
 Agora, declare algumas variáveis com os nomes `subtraction`, `multiplication`,
