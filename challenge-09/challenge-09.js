@@ -97,7 +97,7 @@
     console.log( 'O resultado da soma é: ', sum(function(x, y) {
         return x + y;
     }) );
-    // ?
+    // A soma de 10 e 20 é igual a 30
 
     /*
     Agora declare outra variáveis chamadas `subtraction`, `multiplication`,
