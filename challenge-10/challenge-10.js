@@ -13,7 +13,7 @@
     var five = Number('5');
     console.log( five + ' é número?', typeof five === 'number' );
 
-    var concat = String(10) + String(10);
+    var concat = String(10) + String(10); // PODERIA ENCURTAR PARA 'String(10) + 10', LEMBRE-SE QUE: STRING + NUMBER = STRING
     console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
     /*
@@ -60,7 +60,19 @@
         }
 
         return false;
-    }
+    } // FUNCIONA, MAS SE VOCÊ ADICIONAR UM OPERADOR, VAI TER QUE ALTERAR EM DOIS LUGARES! ENTÃO O MELHOR JEITO DE FAZER ISSO SERIA:
+      /*
+
+        function isOperatorValid(operator) {
+            return operation[operator] !== undefined; // AQUI ELE RETORNA 'TRUE' SE ELE FOR DIFERENTE DE UNDEFINED
+            
+            // OU ...
+            
+            // return !!operation[operator]; // COMO O QUE EU QUERO É SABER SE É TRUE OU FALSE, EU POSSO USAR O EQUIVALENTE BOOLEAN PARA TRAZER O RETORNO
+        }
+
+
+      */
 
     /*
     Agora vamos criar a calculadora.
@@ -92,6 +104,24 @@
 
         return false;
 
+        // FUNCIONA! MAS PODIA SER DIFERENTE:
+
+        /*
+        
+        if( !isOperatorValid( operator ) ) {
+            return false;
+        }
+
+        return function( x, y ) {
+            if( typeof x !== 'number' && typeof y !== 'number' ) {
+                return false;
+            }
+
+            return operation[ operator ]( x, y );
+        };
+
+        */
+
     }
 
     /*
@@ -112,7 +142,7 @@
     'Operação "[OPERATOR]" não permitida!'
     */
     function showErrorMessage(operator) {
-        return 'Operação ' + '"' + operator + '" não permitida!';
+        return 'Operação "' + operator + '" não permitida!';
     }
 
     /*
@@ -153,7 +183,18 @@
         console.log( showErrorMessage(operationSignal) );
     } else {
         console.log( showOperationMessage(operationSignal, number1, number2), sum(number1, number2) );
-    } 
+    }
+
+    // FUNCIONA, MAS PODIA TER SIMPLIFICADO UM POUCO MAIS:
+    /*
+        if(sum) {
+            number1 = 10;
+            number2 = 12;
+            console.log( showOperationMessage(operationSignal, number1, number2), sum(number1, number2) );
+        } else {
+            console.log( showErrorMessage(operationSignal) );
+        }
+    */
 
     /*
     Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
@@ -206,7 +247,9 @@
         console.log( showErrorMessage(operationSignal) );
     } else {
         console.log( showOperationMessage(operationSignal, number1, number2), mod(number1, number2) );
-    } 
+    }
+
+    // MESMA COISA DO EXERCICIO ANTERIOR, PODIA TER SIMPLIFICADO MAIS O CÓDIGO, PORÉM FUNCIONA!
 
     /*
     Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
@@ -225,4 +268,6 @@
         console.log( showOperationMessage(operationSignal, number1, number2), teste(number1, number2) );
     }
 
-}())
+    // MESMA COISA DO EXERCICIO ANTERIOR, PODIA TER SIMPLIFICADO MAIS O CÓDIGO, PORÉM FUNCIONA!
+
+}()); // FALTOU O PONTO E VÍRGULA
