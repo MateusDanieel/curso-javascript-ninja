@@ -1,4 +1,4 @@
-(function() {
+(function() {    
     /*
     Crie uma IIFE que envolva todo esse arquivo (inclusive esse comentário),
     e faça a indentação correta.
@@ -13,7 +13,7 @@
     var five = Number('5');
     console.log( five + ' é número?', typeof five === 'number' );
 
-    var concat = String(10) + String(10); // PODERIA ENCURTAR PARA 'String(10) + 10', LEMBRE-SE QUE: STRING + NUMBER = STRING
+    var concat = String(10) + 10;
     console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
     /*
@@ -26,7 +26,7 @@
     propriedade, usando os valores passados por parâmetro.
     */
     var operation = {
-        '+': function(x ,y) {
+        '+': function(x, y) {
             return x + y;
         },
         '-': function(x, y) {
@@ -53,26 +53,9 @@
     Caso contrário, "false".
     - O desafio é fazer o retorno sem usar "if" ou "switch".
     */
-    function isOperatorValid(operator) {
-
-        while (operator === '+' || operator === '-' || operator === '*' || operator === '/' || operator === '%') {
-            return true;
-        }
-
-        return false;
-    } // FUNCIONA, MAS SE VOCÊ ADICIONAR UM OPERADOR, VAI TER QUE ALTERAR EM DOIS LUGARES! ENTÃO O MELHOR JEITO DE FAZER ISSO SERIA:
-      /*
-
-        function isOperatorValid(operator) {
-            return operation[operator] !== undefined; // AQUI ELE RETORNA 'TRUE' SE ELE FOR DIFERENTE DE UNDEFINED
-            
-            // OU ...
-            
-            // return !!operation[operator]; // COMO O QUE EU QUERO É SABER SE É TRUE OU FALSE, EU POSSO USAR O EQUIVALENTE BOOLEAN PARA TRAZER O RETORNO
-        }
-
-
-      */
+    function isOperatorValid( operator ) {
+        return !!operation[ operator ];
+    }
 
     /*
     Agora vamos criar a calculadora.
@@ -86,42 +69,18 @@
     operador passado para a função "calculator", e passando para esse método
     os dois parâmetros da função de retorno de "calculator".
     */
-    function calculator(operator) {
-
-        if( isOperatorValid(operator) ) {
-
-            return function(x, y) {
-            
-                if(typeof x !== 'number' || typeof y !== 'number') {
-                    return false;
-                } 
-                
-                return operation[operator](x, y);
-    
-            };
-
-        }
-
-        return false;
-
-        // FUNCIONA! MAS PODIA SER DIFERENTE:
-
-        /*
-        
-        if( !isOperatorValid( operator ) ) {
+    function calculator( operator ) {
+        if(!isOperatorValid ( operator ) ) {
             return false;
         }
 
-        return function( x, y ) {
-            if( typeof x !== 'number' && typeof y !== 'number' ) {
+        return function(x, y) {
+            if(typeof x !== 'number' || typeof y !== 'number') {
                 return false;
             }
 
-            return operation[ operator ]( x, y );
+            return operation[ operator ](x, y);
         };
-
-        */
-
     }
 
     /*
@@ -131,8 +90,8 @@
     'A operação [NUMBER1] [OPERATOR] [NUMBER2] =';
     Essa função mostrará a mensagem da operação que criaremos mais abaixo.
     */
-    function showOperationMessage(operator, numA, numB) {
-        return 'A operação ' + numA + ' ' + operator + ' ' + numB + ' =';
+    function showOperationMessage( operator, nmr1, nmr2 ) {
+        return 'A operação ' + nmr1 + ' ' + operator + ' ' + nmr2 + ' =';
     }
 
     /*
@@ -141,8 +100,9 @@
     Essa função deverá retornar a frase:
     'Operação "[OPERATOR]" não permitida!'
     */
-    function showErrorMessage(operator) {
-        return 'Operação "' + operator + '" não permitida!';
+    function showErrorMessage( operator ) {
+        return 'Operação "' + operator + '" não permitida';
+
     }
 
     /*
@@ -176,25 +136,14 @@
     - O segundo, a função de soma, passando os dois operandos.
     - Se "sum" for "false", mostrar no console a mensagem de erro.
     */
-    number1 = 10;
-    number2 = 40;
+    if(sum) {
+        number1 = 2;
+        number2 = 2;
 
-    if(sum === false) {
-        console.log( showErrorMessage(operationSignal) );
+        console.log( showOperationMessage(operationSignal, number1, number2), sum( number1, number2 ) );
     } else {
-        console.log( showOperationMessage(operationSignal, number1, number2), sum(number1, number2) );
+        console.log( showErrorMessage(operationSignal) );
     }
-
-    // FUNCIONA, MAS PODIA TER SIMPLIFICADO UM POUCO MAIS:
-    /*
-        if(sum) {
-            number1 = 10;
-            number2 = 12;
-            console.log( showOperationMessage(operationSignal, number1, number2), sum(number1, number2) );
-        } else {
-            console.log( showErrorMessage(operationSignal) );
-        }
-    */
 
     /*
     Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
@@ -204,70 +153,67 @@
     operationSignal = '-';
     var subtraction = calculator(operationSignal);
 
-    number1 = 50;
-    number2 = 20;
+    if(subtraction) {
+        number1 = 2;
+        number2 = 2;
 
-    if(subtraction === false) {
-        console.log( showErrorMessage(operationSignal) );
+        console.log( showOperationMessage(operationSignal, number1, number2), subtraction( number1, number2 ) );
     } else {
-        console.log( showOperationMessage(operationSignal, number1, number2), subtraction(number1, number2) );
+        console.log( showErrorMessage(operationSignal) );
     }
 
     operationSignal = '*';
     var multiplication = calculator(operationSignal);
 
-    number1 = 50;
-    number2 = 20;
+    if(multiplication) {
+        number1 = 2;
+        number2 = 2;
 
-    if(multiplication === false) {
-        console.log( showErrorMessage(operationSignal) );
+        console.log( showOperationMessage(operationSignal, number1, number2), multiplication( number1, number2 ) );
     } else {
-        console.log( showOperationMessage(operationSignal, number1, number2), multiplication(number1, number2) );
+        console.log( showErrorMessage(operationSignal) );
     }
 
     operationSignal = '/';
     var division = calculator(operationSignal);
 
-    number1 = 10;
-    number2 = 2;
+    if(division) {
+        number1 = 2;
+        number2 = 2;
 
-    if(division === false) {
-        console.log( showErrorMessage(operationSignal) );
+        console.log( showOperationMessage(operationSignal, number1, number2), division( number1, number2 ) );
     } else {
-        console.log( showOperationMessage(operationSignal, number1, number2), division(number1, number2) );
+        console.log( showErrorMessage(operationSignal) );
     }
 
     operationSignal = '%';
     var mod = calculator(operationSignal);
 
-    number1 = 10;
-    number2 = 2;
+    if(mod) {
+        number1 = 2;
+        number2 = 2;
 
-    if(mod === false) {
-        console.log( showErrorMessage(operationSignal) );
+        console.log( showOperationMessage(operationSignal, number1, number2), mod( number1, number2 ) );
     } else {
-        console.log( showOperationMessage(operationSignal, number1, number2), mod(number1, number2) );
+        console.log( showErrorMessage(operationSignal) );
     }
 
-    // MESMA COISA DO EXERCICIO ANTERIOR, PODIA TER SIMPLIFICADO MAIS O CÓDIGO, PORÉM FUNCIONA!
 
     /*
     Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
     a mensagem de erro será mostrada no console.
     */
 
-    operationSignal = '.';
-    var teste = calculator(operationSignal);
+    operationSignal = '()';
+    var mod = calculator(operationSignal);
 
-    number1 = 10;
-    number2 = 2;
+    if(mod) {
+        number1 = 2;
+        number2 = 2;
 
-    if(teste === false) {
-        console.log( showErrorMessage(operationSignal) );
+        console.log( showOperationMessage(operationSignal, number1, number2), mod( number1, number2 ) );
     } else {
-        console.log( showOperationMessage(operationSignal, number1, number2), teste(number1, number2) );
+        console.log( showErrorMessage(operationSignal) );
     }
-
-    // MESMA COISA DO EXERCICIO ANTERIOR, PODIA TER SIMPLIFICADO MAIS O CÓDIGO, PORÉM FUNCIONA!
-
-}()); // FALTOU O PONTO E VÍRGULA
+    
+}());
