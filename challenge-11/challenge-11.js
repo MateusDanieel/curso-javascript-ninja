@@ -54,9 +54,27 @@
     */
     function moreThan(age) {
         return age <= person.age ? true : false;
+        
+        // ESTÁ CORRETO! MAS TAMBÉM PODERIA TER SIDO FEITO DA SEGUINTE FORMA:
+
+        /*
+            if( person.age > age ) {
+                return true;
+            }
+
+            return false;
+        */
+
+        // OU TAMBÉM ..
+        // return person.age > age true : false;
+
+        // OU AINDA ...
+        // return person.age > age; // AQUI ELE JÁ RETORNA UM VALOR BOOLEANO
     }
 
     console.log('The person has more than 25 years old? ' + moreThan(25));
+
+    
 
     /*
     Faça um loop de 0 a 20, que adicione cada número como um item de um
