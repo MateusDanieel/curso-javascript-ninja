@@ -41,6 +41,14 @@
         {name: 'Star Wars: Marcas da Guerra', pages: 415},
         {name: 'Assassins Creed: Irmandade ', pages: 348},
     ];
+
+    // APESAR DE FUNCIONAR, ERA ESPERADO QUE FOSSE UTILIZADO O MÉTODO push(), COMO A SEGUIR:
+    /*
+        books.push({ name: 'jQuery Mobile', pages: 250 });
+        books.push({ name: 'Javascript de Alto Desempenho', pages: 150 });
+        books.push({ name: 'CSS3', pages: 280 });
+    */
+
     console.log( '\nLista de livros:' );
 
     /*
@@ -53,6 +61,12 @@
     Remova o último livro, e mostre-o no console.
     */
     console.log( books.pop() );
+    // O '.pop()' RETORNA O ITEM QUE ELE REMOVEU
+    // ESSE RETORNO TAMBÉM PODERIA SER ATRIBUIDO A UMA VARIÁVEL, EXEMPLO:
+    /*
+        var livroDel = books.pop(); // livroDel VAI RECEBER O VALOR DO ITEM DELETADO
+        console.log(livroDel);
+    */
 
     console.log( '\nAgora sobraram somente os livros:' );
     /*
@@ -74,7 +88,7 @@
     /*
     Converta os livros novamente para objeto.
     */
-    JSON.parse(strBooks);
+    JSON.parse(strBooks); // ERRADO! VOCÊ DEVIA USAR O 'parse()' ATRIBUINDO ELE A OUTRA VARIÁVEL! O CORRETO SERIA: strBooks = JSON.parse(strBooks)
     console.log( '\nAgora os livros são objetos novamente:' );
 
     /*
@@ -82,7 +96,16 @@
     no formato abaixo:
         "[PROPRIEDADE]: [VALOR]"
     */
-    console.log( strBooks );
+    console.log( strBooks ); // ERRADO! ERA ESPERADO QUE UTILIZASSE O 'for' PARA PREENCHER OS VALORES! O CORRETO SERIA:
+    /*
+        for(var i = 0; i < books.length; i++) { // ENQUANTO 'i' FOR MENOR QUE A QTD DE ITENS NO ARRAY 'books'
+            
+            for( var prop in books[i] ) {
+                console.log( prop + ': ' +  books[i][prop] );
+            }
+
+        } 
+    */
 
     /*
     Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
@@ -101,7 +124,7 @@
     /*
     Ainda usando o objeto acima, mostre no console seu nome invertido.
     */
-    console.log( myName.reverse() );
+    console.log( myName.reverse() ); // PODIA TAMBÉM TER COLOCADO UM .join() NA SEQUENCIA PARA TRAZER CONVERTIDO
 
     console.log( '\nAgora em ordem alfabética:' );
     /*
