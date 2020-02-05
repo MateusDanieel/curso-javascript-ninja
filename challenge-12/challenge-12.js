@@ -1,5 +1,4 @@
 (function() {
-    
     /*
     Envolva todo o conteúdo desse arquivo em uma IIFE.
     */
@@ -13,8 +12,8 @@
     de valor para cada propriedade.
     */
     var person = {
-        name: 'Mateus',
-        lastname: 'Daniel da Silva',
+        name: 'Mateus Daniel',
+        lastname: 'da Silva',
         age: 22
     };
     console.log( 'Propriedades de "person":' );
@@ -36,43 +35,27 @@
     `name`: String
     `pages`: Number
     */
-    books = [
-        {name: 'Harry Potter e as Relíquias da Morte', pages: 692},
-        {name: 'Star Wars: Marcas da Guerra', pages: 415},
-        {name: 'Assassins Creed: Irmandade ', pages: 348},
-    ];
-
-    // APESAR DE FUNCIONAR, ERA ESPERADO QUE FOSSE UTILIZADO O MÉTODO push(), COMO A SEGUIR:
-    /*
-        books.push({ name: 'jQuery Mobile', pages: 250 });
-        books.push({ name: 'Javascript de Alto Desempenho', pages: 150 });
-        books.push({ name: 'CSS3', pages: 280 });
-    */
-
+    books.push({name:'HTML5 e CSS3', pages: 477});
+    books.push({name:'JavaScript para Iniciantes', pages: 612});
+    books.push({name:'UML2: Uma Abordagem Prática', pages: 555});
     console.log( '\nLista de livros:' );
 
     /*
     Mostre no console todos os livros.
     */
-    console.log( books );
+    console.log(books);
 
     console.log( '\nLivro que está sendo removido:' );
     /*
     Remova o último livro, e mostre-o no console.
     */
     console.log( books.pop() );
-    // O '.pop()' RETORNA O ITEM QUE ELE REMOVEU
-    // ESSE RETORNO TAMBÉM PODERIA SER ATRIBUIDO A UMA VARIÁVEL, EXEMPLO:
-    /*
-        var livroDel = books.pop(); // livroDel VAI RECEBER O VALOR DO ITEM DELETADO
-        console.log(livroDel);
-    */
 
     console.log( '\nAgora sobraram somente os livros:' );
     /*
     Mostre no console os livros restantes.
     */
-    console.log( books );
+    console.log(books);
 
     /*
     Converta os objetos que ficaram em `books` para strings.
@@ -88,7 +71,7 @@
     /*
     Converta os livros novamente para objeto.
     */
-    JSON.parse(strBooks); // ERRADO! VOCÊ DEVIA USAR O 'parse()' ATRIBUINDO ELE A OUTRA VARIÁVEL! O CORRETO SERIA: strBooks = JSON.parse(strBooks)
+    books = JSON.parse(strBooks);
     console.log( '\nAgora os livros são objetos novamente:' );
 
     /*
@@ -96,16 +79,15 @@
     no formato abaixo:
         "[PROPRIEDADE]: [VALOR]"
     */
-    console.log( strBooks ); // ERRADO! ERA ESPERADO QUE UTILIZASSE O 'for' PARA PREENCHER OS VALORES! O CORRETO SERIA:
-    /*
-        for(var i = 0; i < books.length; i++) { // ENQUANTO 'i' FOR MENOR QUE A QTD DE ITENS NO ARRAY 'books'
-            
-            for( var prop in books[i] ) {
-                console.log( prop + ': ' +  books[i][prop] );
-            }
+    for(var i = 0; i <= books.length; i++) {
 
-        } 
-    */
+        for(var prop in books[i]) {
+
+            console.log( prop + ': ' + books[i][prop] );
+
+        }
+
+    }
 
     /*
     Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
@@ -124,12 +106,11 @@
     /*
     Ainda usando o objeto acima, mostre no console seu nome invertido.
     */
-    console.log( myName.reverse() ); // PODIA TAMBÉM TER COLOCADO UM .join() NA SEQUENCIA PARA TRAZER CONVERTIDO
+    console.log( myName.reverse().join('') );
 
     console.log( '\nAgora em ordem alfabética:' );
     /*
     Mostre todos os itens do array acima, odenados alfabéticamente.
     */
-    console.log( myName.sort() );
-
+    console.log( myName.sort().join(' ') );
 }());
