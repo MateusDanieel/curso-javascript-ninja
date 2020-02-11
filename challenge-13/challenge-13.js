@@ -11,6 +11,7 @@
     console.log( 'O array em formato de string é:' );
     var arr = ['Mateus', 17, null];
     console.log( arr.toString() );
+    // TÁ CERTO, MAS TAMBÉM PODIA MOSTRAR DIRETO AO INVÉS DE ATRIBUIR O ARRAY A UMA VARIÁVEL, EXEMPLO: console.log( [1, 2, 3].toString() );
 
     /*
     Crie 2 arrays `sul` e `sudeste`, que serão as regiões do Brasil.
@@ -35,6 +36,7 @@
     brasil.unshift('Acre');
     brasil.unshift('Amazonas');
     brasil.unshift('Roraima');
+    // BOA! MAS O MÉTODO UNSHIFT PODE INSERIR MAIS DE UM ITEM DE UMA VEZ SEM PROBLEMAS, EXEMPLO: brasil.unshift('Acre', 'Amazonas', 'Roraima');
 
     console.log(brasil);
 
@@ -44,6 +46,7 @@
     console.log( '\nEstado removido:' );
     var del = brasil.shift();
     console.log(del);
+    // TÁ CERTO, MAS TAMBÉM PODIA MOSTRAR DIRETO AO INVÉS DE ATRIBUIR A UMA VARIÁVEL, EXEMPLO: console.log( brasil.shift() );
 
     /*
     Crie um novo array chamado `newSul`, que receba somente os estados do sul,
@@ -110,6 +113,20 @@
         return { id: index, estado: item }
     } );
 
+    /* // FUNCIONA! MAS ERA ESPERADO QUE FIZESSE UTILIZANDO ForEach
+
+        var newBrasil = [];
+
+        brasil.forEach(function(item, index) {
+            newBrasil.push({
+                id: index,
+                estado: item
+            });
+
+        })
+
+    */
+
     /*
     Mostre o array `newBrasil` no console
     */
@@ -131,6 +148,9 @@
 
     result === true ? console.log('Sim, todos os estados tem mais de 7 letras!') : console.log('Nem todos os estados tem mais de 7 letras!');
 
+    // CERTO! MAS PODIA SIMPLIFICAR UM POUCO ESSE TERNÁRIO. EXEMPLO:
+    // console.log(result ? 'Sim, todos os estados tem mais de 7 letras!' : 'Nem todos os estados tem mais de 7 letras!');
+
     /*
     Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
     resultado à uma variável. Se esse estado existir no array, mostrar a frase no
@@ -145,6 +165,8 @@
     } );
 
     verif === true ? console.log('Ceará está incluído!'):console.log('Ceará não foi incluído :(');
+    // CERTO! PORÉM A MESMA COISA DO EXERCICIO ACIMA, PODIA TER DADO UMA RESUMIDA! EXEMPLO:
+    // console.log(verif ? 'Ceará está incluído!' : 'Ceará não foi incluído :(');
 
     /*
     Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
@@ -156,7 +178,6 @@
     var map = newBrasil.map( function(item, index, array) {
         return { id: item.id++, estado: item.estado + ' pertence ao Brasil.'  };
     } );
-  
 
     /*
     Mostre no console o array criado acima:
