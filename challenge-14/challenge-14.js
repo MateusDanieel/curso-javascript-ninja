@@ -23,7 +23,18 @@
         {number: 8}, 
         {number: 9}, 
         {number: 10} 
-    ];
+    ]; 
+    
+    // ERRADO!
+    // ERA ESPERADO QUE VOCÊ CRIASSE UM 'for' PARA ALIMENTAR ESSE ARRAY! EXEMPLO:
+    /*
+        var numberObjects = [];
+
+        for( var i = 1; i <= 10; i++ ) {
+            numberObjects.push( { number: i } );  
+        }
+    */
+
     console.log( numberObjects );
 
     /*
@@ -43,7 +54,16 @@
         numberObjects[8].number,
         numberObjects[9].number,
     ];
+    
+    // ERRADO! ERA ESPERADO QUE FIZESSE ISSO UTILIZANDO UM MÉTODO DE ARRAY! EXEMPLO:
+    /*
+        var justNumbers = numberObjects.map(function(item) {
+            return item.number;
+        });
+    */
+
     console.log( justNumbers );
+
 
     /*
     Crie um novo array chamado `justMod2Or3`, que receberá do array criado acima
@@ -51,7 +71,7 @@
     no console.
     */
     console.log( '\nJust module of division by 2 or 3:' );
-    var justMod2Or3 = justNumbers.filter(function(item, index) {
+    var justMod2Or3 = justNumbers.filter(function(item, index) { // PASSE SOMENTE OS PARAMETROS QUE VOCÊ FOR UTILIZAR!
         return item % 2 === 0 || item % 3 === 0;
     });
     console.log( justMod2Or3 );
@@ -71,6 +91,15 @@
         return acumulado * atual;
     }, 0);
 
+    // FUNCIONA! O RESULTADO QUE FOI RETORNADO É O CERTO! MAS ERA ESPERADO QUE FIZESSE ASSIM:
+
+    /*
+        var operation = justMod2Or3.reduce(function(acumulado, atual){
+            return (acumulado + 1) * atual;
+        }, 0);
+
+    */
+
     console.log( operation );
 
     /*
@@ -84,6 +113,15 @@
         acumulado++;
         return acumulado * atual;
     }, 0);
+
+    // FUNCIONA! PORÉM, É A MESMA OBSERVAÇÃO DO EXERCÍCIO ACIMA ^^
+
+    /*
+        var operation2 = justMod2Or3.reduceRight(function(acumulado, atual){
+            return (acumulado + 1) * atual;
+        }, 0);
+
+    */
 
     console.log(operation2);
 
@@ -101,7 +139,7 @@
     var pName = nameS.reduce(function(acumulado, atual) {
 
         return acumulado + 'P' + atual;
-    });
+    }); // TINHA QUE PASSAR UMA STRING VAZIA COMO VALOR INICIAL, TIRANDO ISSO A RESOLUÇÃO FOI CORRETA!
 
     console.log(pName);
 
@@ -114,6 +152,7 @@
         return acumulado + atual;
     });
     console.log(inversedName);
+    // CORRETO! MAS TAMBÉM TEM OUTRA MANEIRA DE FAZER: console.log( name.reverse().join('') );
 
     /*
     Mostre no console o array `numberObjects`.
@@ -131,13 +170,31 @@
     o que acontece ;)
     */
     console.log( '\nExiste um { number: 2 } em numberObjects?' );
+
+    /*
+        if( numberObjects.indexOf({ number: 2 }) > -1 ) {
+            console.log('Existe um objeto { number:2 } em numberObjects!')
+        } else {
+            console.log('Não existe um objeto { number: 2 } em numberObjects :(');
+        }
+
+        // VAI CAIR NO ELSE!!! CADA OBJETO TEM ESPAÇO ÚNICO NA MEMÓRIA, OU SEJA, NUNCA OBJETO VAI SER IGUAL OBJETO! '{} === {} ? false' // MAIS INFORMAÇÕES NA AULA #12
+    */
     
     /*
     Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
     será que obtemos um resultado diferente? Faça a busca a partir do índice 2.
     */
     console.log( '\nE buscando a partir do último índice, o { number: 2 } existe?' );
+    /*
+        if( numberObjects.lastIndexOf({ number: 2 }, 2) > -1 ) {
+            console.log('Existe um objeto { number:2 } em numberObjects!')
+        } else {
+            console.log('Não existe um objeto { number: 2 } em numberObjects :(');
+        }
 
+        // VAI CAIR NO ELSE!!! CADA OBJETO TEM ESPAÇO ÚNICO NA MEMÓRIA, OU SEJA, NUNCA OBJETO VAI SER IGUAL OBJETO! '{} === {} ? false' // MAIS INFORMAÇÕES NA AULA #12
+    */
 
     /*
     Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
