@@ -1,5 +1,4 @@
 (function() {
-        
     /*
     Envolva todo o código desse desafio em uma IIFE.
     */
@@ -12,28 +11,12 @@
     Mostre esse array no console.
     */
     console.log( 'Number Objects Array:' );
-    var numberObjects = [ 
-        {number: 1}, 
-        {number: 2}, 
-        {number: 3}, 
-        {number: 4}, 
-        {number: 5}, 
-        {number: 6}, 
-        {number: 7}, 
-        {number: 8}, 
-        {number: 9}, 
-        {number: 10} 
-    ]; 
-    
-    // ERRADO!
-    // ERA ESPERADO QUE VOCÊ CRIASSE UM 'for' PARA ALIMENTAR ESSE ARRAY! EXEMPLO:
-    /*
-        var numberObjects = [];
 
-        for( var i = 1; i <= 10; i++ ) {
-            numberObjects.push( { number: i } );  
-        }
-    */
+    var numberObjects = [];
+
+    for(i = 1; i <= 10; i++) {
+        numberObjects.push( { number: i } );
+    }
 
     console.log( numberObjects );
 
@@ -42,28 +25,12 @@
     números do array criado acima. Mostre esse novo array no console.
     */
     console.log( '\nJust Numbers:' );
-    var justNumbers = [
-        numberObjects[0].number,
-        numberObjects[1].number,
-        numberObjects[2].number,
-        numberObjects[3].number,
-        numberObjects[4].number,
-        numberObjects[5].number,
-        numberObjects[6].number,
-        numberObjects[7].number,
-        numberObjects[8].number,
-        numberObjects[9].number,
-    ];
-    
-    // ERRADO! ERA ESPERADO QUE FIZESSE ISSO UTILIZANDO UM MÉTODO DE ARRAY! EXEMPLO:
-    /*
-        var justNumbers = numberObjects.map(function(item) {
-            return item.number;
-        });
-    */
+
+    var justNumbers = numberObjects.map(function(item) {
+        return item.number;
+    });
 
     console.log( justNumbers );
-
 
     /*
     Crie um novo array chamado `justMod2Or3`, que receberá do array criado acima
@@ -71,9 +38,11 @@
     no console.
     */
     console.log( '\nJust module of division by 2 or 3:' );
-    var justMod2Or3 = justNumbers.filter(function(item, index) { // PASSE SOMENTE OS PARAMETROS QUE VOCÊ FOR UTILIZAR!
+
+    var justMod2Or3 = justNumbers.filter(function(item) {
         return item % 2 === 0 || item % 3 === 0;
     });
+
     console.log( justMod2Or3 );
 
     /*
@@ -86,21 +55,11 @@
     */
     console.log( '\nOperation:' );
 
-    var operation = justMod2Or3.reduce(function(acumulado, atual){
-        acumulado++;
-        return acumulado * atual;
+    var operation = justMod2Or3.reduce(function(acumulado, atual) {
+        return (acumulado + 1) * atual;
     }, 0);
 
-    // FUNCIONA! O RESULTADO QUE FOI RETORNADO É O CERTO! MAS ERA ESPERADO QUE FIZESSE ASSIM:
-
-    /*
-        var operation = justMod2Or3.reduce(function(acumulado, atual){
-            return (acumulado + 1) * atual;
-        }, 0);
-
-    */
-
-    console.log( operation );
+    console.log(operation);
 
     /*
     Faça o mesmo cálculo passado acima, mas começando do último item para o
@@ -108,22 +67,10 @@
     console.
     */
     console.log( '\nOperation 2:' );
-
-    var operation2 = justMod2Or3.reduceRight(function(acumulado, atual){
-        acumulado++;
-        return acumulado * atual;
+    
+    var operation = justMod2Or3.reduceRight(function(acumulado, atual) {
+        return (acumulado + 1) * atual;
     }, 0);
-
-    // FUNCIONA! PORÉM, É A MESMA OBSERVAÇÃO DO EXERCÍCIO ACIMA ^^
-
-    /*
-        var operation2 = justMod2Or3.reduceRight(function(acumulado, atual){
-            return (acumulado + 1) * atual;
-        }, 0);
-
-    */
-
-    console.log(operation2);
 
     /*
     Crie um array chamado `name`. Cada elemento desse array deve ser uma sílaba
@@ -135,30 +82,37 @@
     */
     console.log( '\nSeu nome na língua do "P":' );
     
-    var nameS = ['Ma', 'te', 'us'];
-    var pName = nameS.reduce(function(acumulado, atual) {
+    var nameX = ['Ma', 'te', 'us'];
 
+    var nameP = nameX.reduce(function(acumulado, atual) {
         return acumulado + 'P' + atual;
-    }); // TINHA QUE PASSAR UMA STRING VAZIA COMO VALOR INICIAL, TIRANDO ISSO A RESOLUÇÃO FOI CORRETA!
+    }, '');
 
-    console.log(pName);
+    console.log( nameP );
+
+    // TIVE QUE ALTERAR O NOME DA VARIÁVEL 'name' POIS, DAVA ERRO COM ESSE NOME, DEVE SER PQ É UMA PALAVRA RESERVADA
 
     /*
     Crie uma variável chamada `inversedName`, que reduzirá o array em uma string
     e atribuirá o seu nome invertido (usando o array criado acima).
     */
     console.log( '\nInversed Name:' );
-    var inversedName = nameS.reduceRight(function(acumulado, atual) {
+    
+    var inversedName = nameX.reduceRight(function(acumulado, atual) {
         return acumulado + atual;
     });
-    console.log(inversedName);
-    // CORRETO! MAS TAMBÉM TEM OUTRA MANEIRA DE FAZER: console.log( name.reverse().join('') );
+
+    console.log( inversedName );
+
+    // OU APENAS
+
+    console.log( nameX.reverse().join('') );
 
     /*
     Mostre no console o array `numberObjects`.
     */
     console.log( '\nNumber objects' );
-    console.log(numberObjects);
+    console.log( numberObjects );
 
     /*
     Verifique se existem em algum índice de numberObjects um objeto ìgual a
@@ -170,37 +124,33 @@
     o que acontece ;)
     */
     console.log( '\nExiste um { number: 2 } em numberObjects?' );
-
-    /*
-        if( numberObjects.indexOf({ number: 2 }) > -1 ) {
-            console.log('Existe um objeto { number:2 } em numberObjects!')
-        } else {
-            console.log('Não existe um objeto { number: 2 } em numberObjects :(');
-        }
-
-        // VAI CAIR NO ELSE!!! CADA OBJETO TEM ESPAÇO ÚNICO NA MEMÓRIA, OU SEJA, NUNCA OBJETO VAI SER IGUAL OBJETO! '{} === {} ? false' // MAIS INFORMAÇÕES NA AULA #12
-    */
     
+    if( numberObjects.indexOf( { number: 2 } ) > -1 ) {
+        console.log('Existe um objeto { number: 2 } em numberObjects!');
+    } else {
+        console.log('Não existe um objeto { number: 2 } em numberObjects :(');
+    }
+
+    // {} != {} SEMPRE! A NÃO SER QUE VOCÊ REFERENCIE O OBJETO ATRIBUINDO ELE A UMA VARIÁVEL
+
     /*
     Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
     será que obtemos um resultado diferente? Faça a busca a partir do índice 2.
     */
     console.log( '\nE buscando a partir do último índice, o { number: 2 } existe?' );
-    /*
-        if( numberObjects.lastIndexOf({ number: 2 }, 2) > -1 ) {
-            console.log('Existe um objeto { number:2 } em numberObjects!')
-        } else {
-            console.log('Não existe um objeto { number: 2 } em numberObjects :(');
-        }
-
-        // VAI CAIR NO ELSE!!! CADA OBJETO TEM ESPAÇO ÚNICO NA MEMÓRIA, OU SEJA, NUNCA OBJETO VAI SER IGUAL OBJETO! '{} === {} ? false' // MAIS INFORMAÇÕES NA AULA #12
-    */
+    
+    if( numberObjects.lastIndexOf( { number: 2 }, 2 ) > -1 ) {
+        console.log('Existe um objeto { number: 2 } em numberObjects!');
+    } else {
+        console.log('Não existe um objeto { number: 2 } em numberObjects :(');
+    }
 
     /*
     Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
     formato de String.
     */
     console.log( '\njustMod2Or3 é um array? Se for, a representação dele em String é:' );
-    console.log( Array.isArray(justMod2Or3) ? justMod2Or3.toString() : 'justMod2Or3 não é um array. :(');
+    
+    console.log( Array.isArray(justMod2Or3) ? justMod2Or3.toString() : false );
 
 }());
