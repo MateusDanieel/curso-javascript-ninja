@@ -22,6 +22,7 @@
     adicionados à idade original (age). Esse método deverá retornar o objeto
     que será instanciado.
     */
+
     function Person(name, lastName, age) {
         this.name = name;
         this.lastName = lastName;
@@ -32,10 +33,22 @@
         this.getAge = function() {
             return this.age;
         };
+
+        // ACERTOU QUASE TUDO! ERROU AQUI!
+        // ERA ESPERADO QUE USASSE O 'arguments' AQUI
         this.addAge = function(arg) {
             this.age = this.age + arg;
             return this.age;
-        }
+        };
+        /* 
+            this.addAge = function addAge() {
+
+                this.age += arguments[0]; // NÃO PASSEI PARAMETROS, MAS O 'arguments' VAI PEGAR OS VALORES COMO SE TIVESSE PASSADO!
+                return this;
+
+            };
+        */
+
     }
 
     /*
@@ -82,6 +95,6 @@
     jaque.addAge(14);
     console.log( jaque.getFullName() + ' agora tem ' + jaque.getAge() + ' anos.' );
 
-    maria.addAge(10)
+    maria.addAge(10);
     console.log( maria.getFullName() + ' agora tem ' + maria.getAge() + ' anos.' );
 }());
