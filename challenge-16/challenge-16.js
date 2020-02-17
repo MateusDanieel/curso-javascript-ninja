@@ -25,6 +25,16 @@
     }
 
     /*
+        CORRETO! MAS PODIA SIMPLIFICAR UM POUCO O CÓDIGO! EXEMPLO:
+
+        var name = 'Fernando';
+
+        for( var i = 0, len = name.length; i < len; i++ ) {
+            console.log( name[i] + ' é a ' + ( i + 1 ) + 'ª letra do meu nome.' );
+        }
+    */
+
+    /*
     - Declare uma variável chamada `fullName`, que receba seu nome completo,
     escrito no formato de slug (caixa baixa e palavras separadas por um traço).
     Ex: o nome "Fernando Daciuk" ficaria "fernando-daciuk"
@@ -42,10 +52,23 @@
     
     var newFullName = fullName.split('-').map(function(el) {
         return el.replace(el.charAt(0), el.charAt(0).toUpperCase());
-    });;
-    
+    });
+
     console.log( fullName );
     console.log( newFullName.join(' ') );
+
+    /*
+        FUNCIONA! MAS TEM OUTRA MANEIRA DE SE FAZER ISSO:
+        var fullName = 'mateus-daniel-da-silva';
+
+        var newFullName = fullName.split('-').map(function(name) {
+            return name.charAt(0).toUpperCase() + name.slice(1);
+        }).join(' ');
+
+        console.log( fullName );
+        console.log( newFullName );
+
+    */
 
     /*
     - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
@@ -67,6 +90,19 @@
     console.log(newNomes + 'são meus amigos.');
 
     /*
+        TEM UM PEQUENO BUG NA VÍRGULA! UMA SOLUÇÃO ESPERADA SERIA:
+
+        var friends = ['Paulo', 'Marcos', 'Maria', 'Felipe', 'Pedro'];
+        
+        var phrase = friends.reduce(function(acumulado, atual, index) {
+            var separator = friends.length - 1 === index ? ' e ' : ', ';
+            return acumulado + separator + atual;
+        }).concat( ' são meus amigos.' );
+
+        console.log( phrase );
+    */
+
+    /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
     Mostre o resultado no console.
     */
@@ -79,6 +115,8 @@
     }).reduce(function(acumulado, atual) {
         return acumulado + atual;
     }) );
+
+    // ERA ESPERADA UMA SOLUÇÃO MAIS SIMPLES. EXEMPLO: 'Roberto'.replace( 'to', 'ta' );
 
     /*
     Mostre no console a parte "nando" da string "Fernando". Use o método que
@@ -106,4 +144,19 @@
     }, '');
 
     console.log( newMyName );
+
+    /*
+        ÓTIMA LÓGICA! MAS TAMBÉM PODERIA SER FEITO COM 'FOR':
+
+        var myName = 'Fernando';
+
+        var myNewName = [];
+        
+        for(var i = 0, len = myName.length; i < len; i++) {
+            myNewName.push( i % 2 === 0 ? myName[i].toLowerCase() : myName[i].toUpperCase() );
+        }
+
+        console.log( newMyName.join('') );
+        
+    */
 }());
