@@ -22,12 +22,24 @@
 
     function cleanCPF(cpf) {
         return cpf.replace(/[-\s\.x]/g, '');
+        // FUNCIONA! PORÉM A MANEIRA MAIS FÁCIL DE FAZER ISSO SERIA PEGAR TUDO AQUILO QUE NÃO É NÚMERO (UTILIZANDO '\D') AO INVÉS DE PEGAR ITEM POR ITEM IGUAL VOCÊ FEZ:
+        // return cpf.replace( /\D/g, '' );
     }
 
     console.log( cleanCPF("049-214 3421-1") );
     console.log( cleanCPF("210.458.522-05") );
     console.log( cleanCPF("735 500 794 - 22") );
     console.log( cleanCPF("101.123-131x32") );
+
+    // PROCURE EVITAR REPETIÇÃO DE CÓDIGO, UTILIZE ESTRUTURAS DE REPETIÇÃO E MÉTODOS DE ARRAY PARA ISSO! EXEMPLO:
+
+    /*
+        var cpfs = ["049-214 3421-1", "210.458.522-05", "735 500 794 - 22", "101.123-131x32"];
+
+        cpfs.forEach(function(cpf) {
+            console.log( cleanCPF(cpf) );
+        });
+    */
 
     /*
     Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
@@ -41,6 +53,26 @@
     }
 
     console.log( formatCPF('04921434211') );
+
+    // ATÉ FUNCIONA, MAS ERA ESPERADO QUE UTILIZASSE REGEX PARA RESOLVER O PROBLEMA. SOLUÇÃO ESPERADA:
+
+    /*
+        cpfs.forEach(function( cpf ) {
+            console.log( cleanCPF( cpf ).replace( /(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/, '$1.$2.$3-$4' ) );
+            // OU
+            // console.log( cleanCPF( cpf ).replace( /(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4' ) );
+            
+        });
+
+        // OU TAMBÉM PODERIA TER FEITO UTILIZANDO UMA FUNÇÃO! EXEMPLO:
+
+        cpfs.forEach(function( cpf ) {
+            console.log( cleanCPF( cpf ).replace( /(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/, function(regexQueFoiPassadaNoPrimeiroParam, arg1, arg2, arg3, arg4) {
+                return arg1 + '.' + arg2 + '.' + arg3 + '-' + arg4;
+            } ) );
+        });
+
+    */
 
     /*
     Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
@@ -68,6 +100,14 @@
 
     console.log( junlho() );
 
+    // FUNCIONA! MAS A SOLUÇÃO ESPERADA SERIA:
+
+    /*
+        console.log('Os meses de janeiro, junho e julho começam com a letra j.'.match(
+            /ju[nl]ho/g
+        ) );
+    */
+
     /*
     Crie uma expressão regular que faça o match com a abertura de uma tag
     HTML qualquer.
@@ -89,6 +129,13 @@
 
     console.log( getHTML() );
 
+    // FUNCIONA! MAS A SOLUÇÃO ESPERADA SERIA:
+
+    /*
+    console.log("<div><section><blockquote>Texto <img /></blockquote></section></div>"
+        .match( /<\w+>/g ) );
+    */
+
     /*
     Crie uma expressão regular que faça o match com uma tag HTML vazia, casando
     com a abertura e fechamento da tag.
@@ -109,6 +156,13 @@
     }
 
     console.log( getTags() );
+
+    // FUNCIONA! MAS A SOLUÇÃO ESPERADA SERIA:
+
+    /*
+    console.log("<div><ul><li></li><li></li><li><span></span></li></ul></div>"
+        .match( /<\w+><\/\w+>/g ) );
+    */
 
     /*
     Vamos complicar um pouco agora :D
@@ -133,7 +187,10 @@
     corretas, para depois aplicar no código ;)
     */
     console.log( '\nFazer replace dos textos das tags:' );
-    
-    
-
+    /* console.log(''
+    .replace( 
+        /<(\w+)>([^<]+)<\/\w+>/g,
+        '<$1>O texto dentro da tag "$1" é "$2"</$1>\n'
+    ) );
+    */
 }());
